@@ -13,7 +13,7 @@ A system for modeling the nutrient requirement of dairy cattle.
 ### read_cattle
 ```r
  library(dairyCattle)
- read_cattle(file="검정성적.xls", na.rm=FALSE)
+ read_cattle(path="검정성적.xls", drop.zero=FALSE, add=FALSE)
 ```
 
 ## Notification
