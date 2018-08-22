@@ -4,19 +4,21 @@
 \alias{read_cattle}
 \title{read_cattle}
 \usage{
-read_cattle(file, na.rm = FALSE)
+read_cattle(path, drop.zero = FALSE, add = FALSE)
 }
 \arguments{
-\item{file}{file path}
+\item{path}{path to the xls/xlsx file.}
 
-\item{na.rm}{remove the dataset that milk yeild == 0.}
+\item{drop.zero}{remove the dataset that milk yeild == 0.}
+
+\item{add}{add some columns for additional analysis.}
 }
 \description{
 This import the cattle data from http://www.aiak.or.kr.
 }
 \examples{
-read_cattle("test.xlsx",na.rm=TRUE)
-read_cattle("test.xlsx",na.rm=FALSE)
+read_cattle(path="result.xls",drop.zero=TRUE)
+read_cattle(path="result.xls",drop.zero=FALSE,add=TRUE)
 }
 \keyword{cattle}
 \keyword{dairy}
