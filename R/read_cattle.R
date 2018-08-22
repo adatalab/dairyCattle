@@ -1,8 +1,9 @@
 #' read_cattle
 #'
 #' This import the cattle data from http://www.aiak.or.kr.
-#' @param file file path
-#' @param na.rm remove the dataset that milk yeild == 0.
+#' @param path path to the xls/xlsx file.
+#' @param drop.zero remove the dataset that milk yeild == 0.
+#' @param add add some columns for additional analysis.
 #' @keywords dairy cattle
 #' @import janitor
 #' @import dplyr
@@ -10,21 +11,43 @@
 #' @import readxl
 #' @export
 #' @examples
-#' read_cattle("test.xlsx",na.rm=TRUE)
-#' read_cattle("test.xlsx",na.rm=FALSE)
+#' read_cattle(path="result.xls",drop.zero=TRUE)
+#' read_cattle(path="result.xls",drop.zero=FALSE,add=TRUE)
 
-read_cattle <- function(file, na.rm=FALSE) {
-  
+read_cattle <- function(path, drop.zero=FALSE, add=FALSE) {
+
   # package
-  stopifnot(require(janitor), require(dplyr), require(lubridate), require(readxl))
-  
-  df <- readxl::read_excel(file)
+  stopifnot(
+    require(janitor),
+    require(dplyr),
+    require(lubridate),
+    require(readxl)
+  )
+
+  df <- readxl::read_excel(path)
   df <- janitor::clean_names(df,case = "lower_camel")
   df[,c(4,6,7,8,26,30)] <- lapply(df[,c(4,6,7,8,26,30)],FUN = ymd)
-  
-  if(na.rm==TRUE) {
+  df$분만후첫수정일까지일수 <- as.numeric(df$분만후첫수정일까지일수)
+  df$산차 <- as.numeric(df$산차)
+
+  if(drop.zero==TRUE) {
     df <- dplyr::filter(df, 유량 > 0)
   }
-  
+
+  if(add==TRUE) {
+    # 분만예정일
+    df$분만예정일 <- ifelse(
+      df$최종수정일자+280>today(),
+      df$최종수정일자+280,
+      NA)
+    df$분만예정일 <- as.Date(df$분만예정일, origin = "1970-01-01")
+
+    # parity
+    df$parity <- ifelse(
+      df$산차>1,
+      "Multiple",
+      ifelse(df$산차==1,"First",NA))
+  }
+
   return(df)
 }
