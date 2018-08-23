@@ -1,7 +1,7 @@
 #' read_cattle
 #'
 #' This import the cattle data from http://www.aiak.or.kr.
-#' @param path path to the xls/xlsx file.
+#' @param path path to the xls/xlsx/csv/txt file.
 #' @param drop.zero remove the dataset that milk yeild == 0.
 #' @param add add some columns for additional analysis.
 #' @keywords dairy cattle
@@ -24,7 +24,9 @@ read_cattle <- function(path, drop.zero=FALSE, add=FALSE) {
     require(readxl)
   )
 
-  df <- readxl::read_excel(path)
+  df <- if(grepl(".xls", path) == TRUE | grepl(".xlsx", path) == TRUE) {
+    readxl::read_excel(path)
+  } else {read.csv(path)}
   df <- janitor::clean_names(df,case = "lower_camel")
   df[,c(4,6,7,8,26,30)] <- lapply(df[,c(4,6,7,8,26,30)],FUN = ymd)
   df$분만후첫수정일까지일수 <- as.numeric(df$분만후첫수정일까지일수)
