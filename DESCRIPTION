@@ -3,7 +3,9 @@ Title: Package
 Version: 0.0.0.9000
 Authors@R: person("Youngjun", "Na", email = "ruminoreticulum@gmail.com", role = c("aut", "cre"))
 Description: A package for the dairy cattle nutrition model.
-Depends: R (>= 3.4.0)
+Depends: R (>= 3.4.0),janitor,
+    dplyr,
+    lubridate
 License: GLP-2
 Encoding: UTF-8
 LazyData: true
