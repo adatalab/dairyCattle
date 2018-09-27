@@ -7,7 +7,7 @@
 read_cattle(path, drop.zero = FALSE, add = FALSE)
 }
 \arguments{
-\item{path}{path to the xls/xlsx file.}
+\item{path}{path to the xls/xlsx/csv/txt file.}
 
 \item{drop.zero}{remove the dataset that milk yeild == 0.}
 

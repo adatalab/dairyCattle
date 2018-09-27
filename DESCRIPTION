@@ -5,11 +5,14 @@ Authors@R: person("Youngjun", "Na", email = "ruminoreticulum@gmail.com", role = 
 Description: A package for the dairy cattle nutrition model.
 Depends: R (>= 3.4.0),janitor,
     dplyr,
-    lubridate
+    lubridate,
+    readxl,
+    ggplot2
 License: GLP-2
 Encoding: UTF-8
 LazyData: true
 Imports: janitor,
     dplyr,
-    lubridate
+    lubridate,
+    readxl
 RoxygenNote: 6.1.0
