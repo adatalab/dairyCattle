@@ -16,6 +16,13 @@ A system for modeling the nutrient requirement of dairy cattle.
  read_cattle(path="검정성적.xls", drop.zero=FALSE, add=FALSE)
 ```
 
+### mun_mp
+A function for MUN-MP analysis
+```r
+df <- read_cattle(path="검정성적.xls", drop.zero=TRUE, add=TRUE) 
+mun_mp(df)
+```
+
 ## Notification
 개발중인 패키지입니다.
 
