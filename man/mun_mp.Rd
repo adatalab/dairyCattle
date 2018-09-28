@@ -4,13 +4,13 @@
 \alias{mun_mp}
 \title{mun_mp}
 \usage{
-mun_mp(data)
+mun_mp(data, grid = FALSE)
 }
 \description{
 A function for mun-milk protein analysis
 }
 \examples{
-mun_mp(data = dairyCattle::read_cattle("cattle_data.xls", drop.zero = TRUE, add = TRUE))
+mun_mp(data = dairyCattle::read_cattle("cattle_data.xls", drop.zero = TRUE, add = TRUE), grid=TRUE)
 }
 \keyword{MUN}
 \keyword{cattle}
