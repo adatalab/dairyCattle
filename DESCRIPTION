@@ -7,12 +7,15 @@ Depends: R (>= 3.4.0),janitor,
     dplyr,
     lubridate,
     readxl,
-    ggplot2
+    ggplot2,
+    viridis
 License: GLP-2
 Encoding: UTF-8
 LazyData: true
 Imports: janitor,
     dplyr,
     lubridate,
-    readxl
+    readxl,
+    ggplot2,
+    viridis
 RoxygenNote: 6.1.0
