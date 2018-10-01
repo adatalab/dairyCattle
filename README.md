@@ -68,7 +68,7 @@ A function for time schedule for parturition of herd.
 parturition(df)
 ```
 
-[Example Result](https://github.com/adatalab/dairyCattle/blob/master/man/figures/parturition.html)
+[Example Result](https://youngjunna.github.io/adatalab/parturition)
 
 
 ## Embedded dataset
