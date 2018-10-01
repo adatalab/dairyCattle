@@ -4,10 +4,10 @@
 \alias{mun_mp}
 \title{mun_mp}
 \usage{
-mun_mp(data, grid = FALSE)
+mun_mp(data, grid = FALSE, density = FALSE, line = FALSE, text = FALSE)
 }
 \description{
-A function for mun-milk protein analysis
+A function for the milk mun-protein analysis
 }
 \examples{
 mun_mp(data = dairyCattle::read_cattle("cattle_data.xls", drop.zero = TRUE, add = TRUE), grid=TRUE)

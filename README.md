@@ -13,31 +13,31 @@ A system for modeling the nutrient requirement of dairy cattle.
 ### read_cattle
 ```r
  library(dairyCattle)
- read_cattle(path="검정성적.xls", drop.zero=FALSE, add=FALSE)
+ read_cattle(path = "검정성적.xls", drop.zero = FALSE, add=FALSE)
 ```
 
-### days_my
+### dim_my
 A function for analysis the milk yield of the herd.
 ```r
 df <- read_cattle(path = "검정성적.xls", drop.zero = TRUE, add = TRUE)
-days_my(data = df, grid = FALSE, line = TRUE, density = FALSE)
+dim_my(data = df, grid = FALSE, line = TRUE, density = FALSE, text = FALSE)
 ```
 <img src="man/figures/days_my_1.png">
 
 ```r
-days_my(data = df, grid = TRUE, line = TRUE, density = FALSE)
+dim_my(data = df, grid = TRUE, line = TRUE, density = FALSE, text = FALSE)
 ```
 <img src="man/figures/days_my_2.png">
 
 ```r
-days_my(data = df, grid = TRUE, line = TRUE, density = TRUE)
+dim_my(data = df, grid = TRUE, line = TRUE, density = TRUE, text = FALSE)
 ```
 <img src="man/figures/days_my_3.png">
 
 ### mun_mp
 A function for MUN-MP analysis.
 ```r
-mun_mp(data = df, grid = FALSE)
+mun_mp(data = df, grid = FALSE, line = TRUE, density = TRUE, text = FALSE)
 ```
 <img src="man/figures/mun_mp_1.png">
 
@@ -49,12 +49,18 @@ mun_mp(data = df, grid = TRUE)
 ```r
 library(gganimate)
 
-mun_mp(data = df, grid = TRUE) +
+mun_mp(data = df, grid = TRUE, line = TRUE, density = TRUE, text = FALSE)
   labs(title = 'Date: {frame_time}', x = 'MUN', y = 'Milk protein') +
   transition_time(검정일) +
   ease_aes('linear')
 ```
 <img src="man/figures/mun_mp_3.gif">
+
+## fat_prot
+A function for the milk fat-protein analysis.
+```r
+fat_prot(data = df, grid = FALSE, line = TRUE, density = TRUE, text = FALSE)
+```
 
 ## Embedded dataset
 ```r
