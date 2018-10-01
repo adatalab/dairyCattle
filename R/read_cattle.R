@@ -39,8 +39,8 @@ read_cattle <- function(path, drop.zero=FALSE, add=FALSE) {
   if(add==TRUE) {
     # 분만예정일
     df$분만예정일 <- ifelse(
-      df$최종수정일자+280>today(),
-      df$최종수정일자+280,
+      df$최종수정일자 + 280 > df$검정일,
+      df$최종수정일자 + 280,
       NA)
     df$분만예정일 <- as.Date(df$분만예정일, origin = "1970-01-01")
 
