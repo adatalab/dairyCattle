@@ -33,7 +33,9 @@ dim_my <- function(data, grid = FALSE, density = FALSE, line = FALSE, text = FAL
 
   if(line == TRUE) {
     plot <- plot +
-      geom_vline(xintercept = 305, color = "grey") +
+      geom_vline(xintercept = 305, color = "grey", linetype = "dashed") +
+      geom_vline(xintercept = 220 + median(data$공태일수), color = "grey") +
+      geom_vline(xintercept = 65, color = "grey") +
       geom_hline(yintercept = mean(data$유량), color = "grey") +
       geom_hline(yintercept = median(data$유량), color = "grey", linetype="dashed") +
       geom_line(data=predicted, size=0.5, color = "grey")

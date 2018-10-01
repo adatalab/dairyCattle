@@ -62,6 +62,15 @@ A function for the milk fat-protein analysis.
 fat_prot(data = df, grid = FALSE, line = TRUE, density = TRUE, text = FALSE)
 ```
 
+## parturition
+A function for time schedule for parturition of herd.
+```r
+parturition(df)
+```
+
+[Example Result](https://github.com/adatalab/dairyCattle/blob/master/man/figures/parturition.html)
+
+
 ## Embedded dataset
 ```r
 dairy_example
