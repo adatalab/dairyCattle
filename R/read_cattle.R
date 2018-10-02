@@ -46,10 +46,19 @@ read_cattle <- function(path, drop.zero=FALSE, add=FALSE) {
 
     # parity
     df$parity <- ifelse(
-      df$산차>1,
+      df$산차 > 1,
       "Multiple",
-      ifelse(df$산차==1,"First",NA))
+      ifelse(df$산차 == 1, "First", NA))
+
+    df$level <- ifelse(
+      df$누적착유일수 < 65,
+      "early",
+      ifelse(df$누적착유일수 > 65 & df$누적착유일수 < 210, "mid", "late"))
+
+    df$level <- factor(df$level, levels = c("early","mid","late"))
+
   }
 
   return(df)
 }
+
