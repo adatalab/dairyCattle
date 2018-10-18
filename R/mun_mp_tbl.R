@@ -9,31 +9,31 @@
 
 mun_mp_tbl <- function(data, dataframe = FALSE) {
   # table
-  data$mp_criteria <- ifelse(data$유단백질 >= 3.0 & data$유단백질 < 3.4, "3.0-3.4", 
+  data$mp_criteria <- ifelse(data$유단백질 >= 3.0 & data$유단백질 < 3.4, "3.0-3.4",
                              ifelse(data$유단백질 < 3.0, "< 3.0", "3.4 <"))
-  
+
   data$mp_criteria <-  as.factor(data$mp_criteria)
   levels(data$mp_criteria) = c("< 3.0", "3.0-3.4", "3.4 <")
-  
-  data$mun_criteria <- ifelse(data$mun >= 12 & data$mun < 18, "12-18", 
+
+  data$mun_criteria <- ifelse(data$mun >= 12 & data$mun < 18, "12-18",
                               ifelse(data$mun < 12, "< 12", "18 <"))
-  
-  data$mum_criteria <-  as.factor(data$mun_criteria)
+
+  data$mun_criteria <-  as.factor(data$mun_criteria)
   levels(data$mun_criteria) = c("< 12", "12-18", "18 <")
-  
+
   if(dataframe == FALSE) {
-    result <- list(Group1 = filter(df, mp_criteria == "< 3.0" & mun_criteria == "< 12")$단축명호,
-         Group2 = filter(df, mp_criteria == "< 3.0" & mun_criteria == "12-18")$단축명호,
-         Group3 = filter(df, mp_criteria == "< 3.0" & mun_criteria == "18 <")$단축명호,
-         Group4 = filter(df, mp_criteria == "3.0-3.4" & mun_criteria == "< 12")$단축명호,
-         Group5 = filter(df, mp_criteria == "3.0-3.4" & mun_criteria == "12-18")$단축명호,
-         Group6 = filter(df, mp_criteria == "3.0-3.4" & mun_criteria == "18 <")$단축명호,
-         Group7 = filter(df, mp_criteria == "3.4 <" & mun_criteria == "< 12")$단축명호,
-         Group8 = filter(df, mp_criteria == "3.4 <" & mun_criteria == "12-18")$단축명호,
-         Group9 = filter(df, mp_criteria == "3.4 <" & mun_criteria == "18 <")$단축명호,
-         summary = table(df$mp_criteria, df$mun_criteria)
+    result <- list(Group1 = filter(data, mp_criteria == "< 3.0" & mun_criteria == "< 12")$단축명호,
+         Group2 = filter(data, mp_criteria == "< 3.0" & mun_criteria == "12-18")$단축명호,
+         Group3 = filter(data, mp_criteria == "< 3.0" & mun_criteria == "18 <")$단축명호,
+         Group4 = filter(data, mp_criteria == "3.0-3.4" & mun_criteria == "< 12")$단축명호,
+         Group5 = filter(data, mp_criteria == "3.0-3.4" & mun_criteria == "12-18")$단축명호,
+         Group6 = filter(data, mp_criteria == "3.0-3.4" & mun_criteria == "18 <")$단축명호,
+         Group7 = filter(data, mp_criteria == "3.4 <" & mun_criteria == "< 12")$단축명호,
+         Group8 = filter(data, mp_criteria == "3.4 <" & mun_criteria == "12-18")$단축명호,
+         Group9 = filter(data, mp_criteria == "3.4 <" & mun_criteria == "18 <")$단축명호,
+         summary = table(data$mp_criteria, data$mun_criteria)
   )}
-  
+
   if(dataframe == TRUE) {
     result <- list(Group1 = filter(data, mp_criteria == "< 3.0" & mun_criteria == "< 12"),
          Group2 = filter(data, mp_criteria == "< 3.0" & mun_criteria == "12-18") ,
@@ -46,6 +46,7 @@ mun_mp_tbl <- function(data, dataframe = FALSE) {
          Group9 = filter(data, mp_criteria == "3.4 <" & mun_criteria == "18 <") ,
          summary = table(data$mp_criteria, data$mun_criteria)
   )}
-  
+
   return(result)
 }
+
