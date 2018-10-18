@@ -17,7 +17,7 @@ A system for modeling the nutrient requirement of dairy cattle.
 ```
 
 ### dim_my
-A function for analysis the milk yield of the herd.
+A function for plotting the milk yield of the herd.
 ```r
 df <- read_cattle(path = "검정성적.xls", drop.zero = TRUE, add = TRUE)
 dim_my(data = df, grid = FALSE, line = TRUE, density = FALSE, text = FALSE)
@@ -35,7 +35,7 @@ dim_my(data = df, grid = TRUE, line = TRUE, density = TRUE, text = FALSE)
 <img src="man/figures/days_my_3.png">
 
 ### mun_mp
-A function for MUN-MP analysis.
+A function for plotting the MUN-MP analysis.
 ```r
 mun_mp(data = df, grid = FALSE, line = TRUE, density = TRUE, text = FALSE)
 ```
@@ -56,8 +56,15 @@ mun_mp(data = df, grid = TRUE, line = TRUE, density = TRUE, text = FALSE)
 ```
 <img src="man/figures/mun_mp_3.gif">
 
+### mun_mp_tbl
+A function for classification of the MUN-MP groups. It returns list of classified herd.
+```r
+mun_mp_tbl(data = df, dataframe = TRUE)
+```
+
+
 ## fat_prot
-A function for the milk fat-protein analysis.
+A function for plotting the milk fat-protein analysis.
 ```r
 fat_prot(data = df, grid = FALSE, line = TRUE, density = TRUE, text = FALSE)
 ```

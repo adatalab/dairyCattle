@@ -3,6 +3,7 @@
 export(dim_my)
 export(fat_prot)
 export(mun_mp)
+export(mun_mp_tbl)
 export(parturition)
 export(read_cattle)
 import(dplyr)
