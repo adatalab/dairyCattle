@@ -4,7 +4,8 @@
 \alias{dim_my}
 \title{dim_my}
 \usage{
-dim_my(data, grid = FALSE, density = FALSE, line = FALSE, text = FALSE)
+dim_my(data, grid = FALSE, density = FALSE, line = FALSE,
+  text = FALSE)
 }
 \description{
 A function for analysis the milk yield of the herd.

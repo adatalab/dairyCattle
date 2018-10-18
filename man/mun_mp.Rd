@@ -4,7 +4,8 @@
 \alias{mun_mp}
 \title{mun_mp}
 \usage{
-mun_mp(data, grid = FALSE, density = FALSE, line = FALSE, text = FALSE)
+mun_mp(data, grid = FALSE, density = FALSE, line = FALSE,
+  text = FALSE)
 }
 \description{
 A function for the milk mun-protein analysis
