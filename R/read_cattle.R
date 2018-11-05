@@ -16,17 +16,12 @@
 
 read_cattle <- function(path, drop.zero=FALSE, add=FALSE) {
 
-  # package
-  stopifnot(
-    require(janitor),
-    require(dplyr),
-    require(lubridate),
-    require(readxl)
-  )
+  df <- readxl::read_excel(path)
 
-  df <- if(grepl(".xls", path) == TRUE | grepl(".xlsx", path) == TRUE) {
+  if(grepl(".xls", path) == TRUE | grepl(".xlsx", path) == TRUE) {
     readxl::read_excel(path)
   } else {read.csv(path)}
+
   df <- janitor::clean_names(df,case = "lower_camel")
   df[,c(4,6,7,8,26,30)] <- lapply(df[,c(4,6,7,8,26,30)],FUN = ymd)
   df$분만후첫수정일까지일수 <- as.numeric(df$분만후첫수정일까지일수)
@@ -37,6 +32,10 @@ read_cattle <- function(path, drop.zero=FALSE, add=FALSE) {
   }
 
   if(add==TRUE) {
+
+    # 4% FCM (Gaines, 1928; unit = kg/d)
+    df$fcm40 <- as.numeric(0.4*df$유량 + 15*df$유지율/100*df$유량)
+
     # 분만예정일
     df$분만예정일 <- ifelse(
       df$최종수정일자 + 280 > df$검정일,
