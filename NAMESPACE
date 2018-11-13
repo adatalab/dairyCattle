@@ -2,6 +2,7 @@
 
 export(dim_my)
 export(fat_prot)
+export(gs_cattle)
 export(mun_mp)
 export(mun_mp_tbl)
 export(parturition)
