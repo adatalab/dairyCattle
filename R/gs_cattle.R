@@ -1,7 +1,7 @@
-#' read_cattle
+#' gs_cattle
 #'
-#' This import the cattle data from http://www.aiak.or.kr.
-#' @param path path to the xls/xlsx/csv/txt file.
+#' read_cattle for google spread sheet file
+#' @param path google spread sheet file.
 #' @param drop.zero remove the dataset that milk yeild == 0.
 #' @param add add some columns for additional analysis.
 #' @keywords dairy cattle
@@ -11,16 +11,12 @@
 #' @import readxl
 #' @export
 #' @examples
-#' read_cattle(path="result.xls",drop.zero=TRUE)
-#' read_cattle(path="result.xls",drop.zero=FALSE,add=TRUE)
+#' df <- googlesheets::gs_title("example") %>% googlesheets::gs_read()
+#' gs_cattle(path = df, drop.zero = TRUE)
 
-read_cattle <- function(path, drop.zero=FALSE, add=FALSE) {
+gs_cattle <- function(path, drop.zero=FALSE, add=FALSE) {
 
-  df <- readxl::read_excel(path)
-
-  if(grepl(".xls", path) == TRUE | grepl(".xlsx", path) == TRUE) {
-    readxl::read_excel(path)
-  } else {read.csv(path)}
+  df <- path
 
   df <- janitor::clean_names(df,case = "lower_camel")
   df[,c(4,6,7,8,26,30)] <- lapply(df[,c(4,6,7,8,26,30)],FUN = ymd)
