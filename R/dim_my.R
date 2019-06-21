@@ -10,21 +10,7 @@
 #' dim_my(data = dairyCattle::read_cattle("cattle_data.xls", drop.zero = TRUE, add = TRUE), grid = FALSE, density = FALSE, line = FALSE, text = FALSE)
 
 dim_my <- function(data, grid = FALSE, density = FALSE, line = FALSE, text = FALSE) {
-  # model 1 ----
-  model <- lm(유량 ~ 누적착유일수 + I(누적착유일수^2), data)
-  xmin <- min(data$누적착유일수)
-  xmax <- max(data$누적착유일수)
-  predicted <- data.frame(누적착유일수 = seq(xmin, xmax, length.out = 100))
-  predicted$유량 <- predict(model, predicted)
-
-  # model 65 to 305 ----
-  data1 <- filter(data, 누적착유일수 > 65, 누적착유일수 < 305)
-  model_65_305 <- lm(유량 ~ 누적착유일수, data1)
-  xmin <- 65
-  # xmax <- 305
-  predicted_65_305 <- data.frame(누적착유일수 = seq(xmin, xmax, length.out = 100))
-  predicted_65_305$유량 <- predict(model_65_305, predicted)
-
+  
   # plot ----
   plot <- data %>%
     ggplot(aes(x = 누적착유일수, y = 유량, color = parity))
@@ -42,6 +28,22 @@ dim_my <- function(data, grid = FALSE, density = FALSE, line = FALSE, text = FAL
   }
 
   if (line == TRUE) {
+    # model 1 ----
+    model <- lm(유량 ~ 누적착유일수 + I(누적착유일수^2), data)
+    xmin <- min(data$누적착유일수)
+    xmax <- max(data$누적착유일수)
+    predicted <- data.frame(누적착유일수 = seq(xmin, xmax, length.out = 100))
+    predicted$유량 <- predict(model, predicted)
+    
+    # model 65 to 305 ----
+    data1 <- filter(data, 누적착유일수 > 65, 누적착유일수 < 305)
+    model_65_305 <- lm(유량 ~ 누적착유일수, data1)
+    xmin <- 65
+    
+    # xmax <- 305
+    predicted_65_305 <- data.frame(누적착유일수 = seq(xmin, xmax, length.out = 100))
+    predicted_65_305$유량 <- predict(model_65_305, predicted)
+    
     plot <- plot +
       geom_vline(xintercept = 305, color = "grey", linetype = "dashed") +
       geom_vline(xintercept = 220 + median(data$공태일수), color = "grey") +
