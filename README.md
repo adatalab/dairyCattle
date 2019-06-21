@@ -1,6 +1,6 @@
 # dairyCattle <img src="man/figures/logo.png" align="right" />
 ## Overview
-A system for modeling the nutrient requirement of dairy cattle.
+A system for modeling and visualization the nutrient requirement of dairy cattle.
 
 ## Installation
 ```r
@@ -49,7 +49,7 @@ mun_mp(data = df, grid = TRUE)
 ```r
 library(gganimate)
 
-mun_mp(data = df, grid = TRUE, line = TRUE, density = TRUE, text = FALSE)
+mun_mp(data = df, grid = TRUE, line = TRUE, density = TRUE, text = FALSE) +
   labs(title = 'Date: {frame_time}', x = 'MUN', y = 'Milk protein') +
   transition_time(검정일) +
   ease_aes('linear')
