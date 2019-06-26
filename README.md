@@ -29,29 +29,29 @@ A function for plotting the milk yield of the herd.
 df <- read_cattle(path = "검정성적.xls", drop.zero = TRUE, add = TRUE)
 dim_my(data = df, grid = FALSE, line = TRUE, density = FALSE, text = FALSE)
 ```
-<img src="man/figures/days_my_1.png" width=40%>
+<img src="man/figures/days_my_1.png" width=70%>
 
 ```r
 dim_my(data = df, grid = TRUE, line = TRUE, density = FALSE, text = FALSE)
 ```
-<img src="man/figures/days_my_2.png" width=40%>
+<img src="man/figures/days_my_2.png" width=70%>
 
 ```r
 dim_my(data = df, grid = TRUE, line = TRUE, density = TRUE, text = FALSE)
 ```
-<img src="man/figures/days_my_3.png" width=40%>
+<img src="man/figures/days_my_3.png" width=70%>
 
 ### mun_mp
 A function for plotting the MUN-MP analysis.
 ```r
 mun_mp(data = df, grid = FALSE, line = TRUE, density = TRUE, text = FALSE)
 ```
-<img src="man/figures/mun_mp_1.png" width=40%>
+<img src="man/figures/mun_mp_1.png" width=70%>
 
 ```r
 mun_mp(data = df, grid = TRUE)
 ```
-<img src="man/figures/mun_mp_2.png" width=40%>
+<img src="man/figures/mun_mp_2.png" width=70%>
 
 ```r
 library(gganimate)
