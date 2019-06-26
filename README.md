@@ -1,6 +1,6 @@
 # dairyCattle <img src="man/figures/logo.png" align="right" />
 ## Overview
-A system for modeling the nutrient requirement of dairy cattle.
+A system for modeling and visualization the nutrient requirement of dairy cattle.
 
 ## Installation
 ```r
