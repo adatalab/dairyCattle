@@ -11,6 +11,7 @@ A system for modeling and visualization the nutrient requirement of dairy cattle
 
 ## Usage
 ### read_cattle
+`read_cattle` imports the cattle data downloaded from Dairy Cattle Improvement Center (http://www.dcic.co.kr) into R. 
 ```r
  library(dairyCattle)
  read_cattle(path = "검정성적.xls", drop.zero = FALSE, add = FALSE)
