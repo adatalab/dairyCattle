@@ -22,7 +22,7 @@ read_cattle <- function(path, drop.zero=FALSE, add=FALSE) {
     readxl::read_excel(path)
   } else {read.csv(path)}
 
-  df <- janitor::clean_names(df,case = "lower_camel")
+  df <- janitor::clean_names(df,case = "lower_camel", ascii = FALSE)
   df[,c(4,6,7,8,26,30)] <- lapply(df[,c(4,6,7,8,26,30)],FUN = ymd)
   df$분만후첫수정일까지일수 <- as.numeric(df$분만후첫수정일까지일수)
   df$산차 <- as.numeric(df$산차)
